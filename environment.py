@@ -1,19 +1,18 @@
 class QueueEnvironment:
-    def __init__(self, num_servers, max_queue_size=None):
-        self.num_servers = num_servers
+    def __init__(self, servers, max_queue_size=None):
+        self.servers = servers
         self.max_queue_size = max_queue_size
-        
-        self.servers = [None] * num_servers   # Each slot can hold a customer
-        self.queue = []                       # Waiting customers
-        self.time = 0                         # Simulation clock
-        self.finished_customers = []          # Record of served customers
-
-    def reset(self):
-        self.servers = [None] * self.num_servers
         self.queue = []
         self.time = 0
         self.finished_customers = []
-        return self._get_state()
+
+    # not sure how to fix this just yet
+    # def reset(self):
+    #     self.servers = [None] * self.num_servers
+    #     self.queue = []
+    #     self.time = 0
+    #     self.finished_customers = []
+    #     return self._get_state()
 
     def step(self, action=None):
         for customer in self.queue:

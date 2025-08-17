@@ -12,9 +12,9 @@ class Customer:
         if skipped:
             self.E += beta
 
-    def compute_service_time(self, worker_skill, is_specialist):
+    def compute_service_time(self, server_skill, is_specialist):
         complication_penalty = self.Comp * (1 - int(is_specialist))
-        self.service_time = self.C * worker_skill * (1 + complication_penalty)
+        self.service_time = self.C * server_skill * (1 + complication_penalty)
         return self.service_time
 
     def __repr__(self):

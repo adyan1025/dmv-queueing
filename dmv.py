@@ -1,9 +1,17 @@
 from customer import Customer
 from environment import QueueEnvironment
-import matplotlib.pyplot as plt
+from server import Server
 
-env = QueueEnvironment(num_servers=2, max_queue_size=5)
+servers = [
+    Server("Alice", skill=1.0, is_specialist=False),
+    Server("Bob", skill=1.2, is_specialist=True),
+    Server("Charlie", skill=0.8, is_specialist=False),
+    Server("Diana", skill=1.5, is_specialist=True)
+]
 
+env = QueueEnvironment(servers, max_queue_size=5)
+
+# just dummy customers for testing, they will be created in the for loop with randomized parameters for the RL model
 env.add_customer(Customer("A", 4.0, 0.2, 1.0))
 env.add_customer(Customer("B", 8.0, 0.5, 2.0))
 env.add_customer(Customer("C", 2.0, 0.1, 1.0))
